@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+  
+  <!--Here the metadatas of the project (teiHeader)-->
+  <teiHeader>
+    
+    <!--Here the description of the file.(fileDesc)-->
+    <fileDesc>
+      
+      <!--Here informations about the title (titleStmt)-->
+      <titleStmt>
+        <title>Assignement3_ODD_MAIRE</title>
+        <respStmt>
+          <resp>ODD customization and TEI encoding</resp>
+          <name>Joséphine Maire </name>
+        </respStmt>
+      </titleStmt>
+      
+      <!--Here informations about the publications (publicationStmt)-->
+      <publicationStmt>
+      <publisher>unpublished, TNAH project</publisher>
+      <availability status="free">
+        <licence>
+          <p>diffusion on Github.</p>
+        </licence>
+      </availability>
+      </publicationStmt>
+      
+      <!--Here the explaination of the source (sourceDesc)-->
+      <sourceDesc>
+        <p>This ODD was generated from an encoded sample of poetry, produced for assignment 2 of the project Encoding Project Portfolio.</p> 
+      </sourceDesc>
+      
+    </fileDesc>
+    
+    <!--Here the description of the encoding-->
+    <encodingDesc>
+      
+      <!--Project description-->
+      <projectDesc>
+        <p>This project aims to encode and design a French poetry corpus composed by three texts: 
+          <title>Le Lac</title> by <name>Alphonse de Lamartine</name>, 
+          <title>L'Albatros</title> by <name>Charles Baudelaire</name> and 
+          <title>La courbe de tes yeux</title> by <name>Paul Eluard</name>. To encode we used XML-TEI.
+          This odd file defines a customized schema which works especially with poetry elements.
+        </p>
+      </projectDesc>
+    </encodingDesc>
+    
+  </teiHeader>
+  <!--End of the Header (</teiHeader>)-->
+  
+
+
+  <!--Here the beginning of the customization project-->
+  <text>
+    
+    <body>
+      <!--First part of the body : head and p, to specifiy the project and describe it-->
+    <head>Customization of my encoding project<!--Here the title of the project--></head>
+      <p>My projet consists in a customization of an encoding model, the idea is include 3 poems in a model of encoding poetry project. To do this, I need a model that I can appy in my 2 poems.</p>
+      
+      <!--Second part of the body : schemaSpec. Explain a schema specification included in schemaSpec.-->
+
+      <schemaSpec ident="assignment3_ODD_MAIRE" start="TEI"><!--schemaSpec: actual specification of my customization-->
+        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc encodingDesc"/>
+        <moduleRef key="core"/>
+        <moduleRef key="tei"/>
+        <moduleRef key="textstructure" include="TEI text body"/>
+        <moduleRef key="verse" include="metDecl"/>
+      </schemaSpec>
+      
+    </body>
+  </text>
+</TEI>
