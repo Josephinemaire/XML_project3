@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-XML encoding project portfolio — La courbe de tes yeux</title>
+            <respStmt>
+               <resp>encoding by</resp>
+               <name>Joséphine Maire</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Gallimard</publisher>
+            <pubPlace>Paris</pubPlace>
+            <date when="1966"/>
+         </publicationStmt>
+         
+      <sourceDesc>
+         <biblStruct>
+            <monogr>
+               <editor>Gallimard</editor>
+               <title>Capitale de la douleur</title>
+               <imprint>
+                  <pubPlace>Paris</pubPlace>
+                  <publisher>Firmin-Didot</publisher>
+                  <date>1966</date>
+               </imprint>
+            </monogr>
+         </biblStruct>
+         </sourceDesc>
+      </fileDesc>
+     <encodingDesc>
+        <projectDesc>
+           <p> Editing in TEI-XML the poem <hi rend ="italique"> La courbe de tes yeux </hi> written by Paul Eluard</p>
+        </projectDesc>
+     </encodingDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <lg type= "stanza">
+            <lg type="quintil"><!--The rime scheme is not regular, so i can not comment it, so it is intentional not to comment-->
+               <l n="1" met="alexandrin"> La courbe de tes yeux fait le tour de mon coeur,</l>
+               <l met="octosyllabe">Un rond de danse et de douceur,</l>
+               <l n="1" met="alexandrin">Auréole du temps, berceau nocturne et sûr,</l>
+               <l n="1" met="alexandrin">Et si je ne sais plus tout ce que j'ai vécu</l>
+               <l met="decasyllabe">C'est que tes yeux ne m'ont pas toujours vu.</l>
+            </lg>
+         </lg>
+         <lg type= "stanza">
+            <lg type="quintil">
+               <l met="decasyllabe">Feuilles de jour et mousse de rosée,</l>
+               <l met="decasyllabe">Roseaux du vent, sourires parfumés,</l>
+               <l met="decasyllabe">Ailes couvrant le monde de lumière,</l>
+               <l met="decasyllabe">Bateaux chargés du ciel et de la mer,</l>
+               <l met="decasyllabe">Chasseurs des bruits et sources des couleurs,</l>
+            </lg>
+           </lg>
+           <lg type ="stanza">
+              <lg type="quintil">
+                <l met="decasyllabe"> Parfums éclos d'une couvée d'aurores</l>
+                <l met="decasyllabe"> Qui gît toujours sur la paille des astres,</l>
+                <l met="decasyllabe">Comme le jour dépend de l'innocence</l>
+                <l met="decasyllabe">Le monde entier dépend de tes yeux purs</l>
+                <l met="decasyllabe">Et tout mon sang coule dans leurs regards.</l>
+            </lg>
+           </lg>
+      </body>
+  </text>
+</TEI>
