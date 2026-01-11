@@ -4,3 +4,7 @@ You can find here the links to the previous assignments:
 
 https://github.com/Josephinemaire/XML_project  
 https://github.com/Josephinemaire/XML_project2
+
+
+#Use of AI 
+In used AI to help me with english too and, for the first time to help me in the validation of my ODD file.
