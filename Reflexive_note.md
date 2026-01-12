@@ -9,4 +9,9 @@ At first, I was a bit confused by the fact that this course was taught in Englis
 
 - Assignement 3 was the most hard step in the project. My computer crashed during the project and I wasted time. But I found the objective very interesting, the idea of determine rules to encode the 3 texts in an only schema. Even if it was very hard, and there are too many errors in the code. I found it interesting to see how a poetry corpus is organised and published today.
 
-(264 words)
+At the end, I would like to say that after a lot of evenings and complete week-end, with all files validates, help of class mates and reading documentation, I can not associate my xml with odd and then reorganise balises. 
+I know I can put 
+<?xml-model href="nom_du_chemin vers RNG"
+schema type ens etc>
+But with your classes, the classes in french made by Segolène Albouy and discussions with class mates about "what does not work ?", I am always blocked. 
+I tried to put my questions in LLM, to ask if it see what was wrong, it works once or twice but not to this...
