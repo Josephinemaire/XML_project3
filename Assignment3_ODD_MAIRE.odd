@@ -64,12 +64,103 @@
       <!--Second part of the body : schemaSpec. Explain a schema specification included in schemaSpec.-->
 
       <schemaSpec ident="assignment3_ODD_MAIRE" start="TEI"><!--schemaSpec: actual specification of my customization-->
-        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt sourceDesc encodingDesc"/>
+        <moduleRef key="header" include="teiHeader fileDesc titleStmt publicationStmt authority sourceDesc encodingDesc projectDesc p"/>
         <moduleRef key="core"/>
         <moduleRef key="tei"/>
         <moduleRef key="textstructure" include="TEI text body"/>
         <moduleRef key="verse" include="metDecl"/>
       </schemaSpec>
+      
+ <!--Here starts the customization -->
+   
+   
+    <!--START element specification 1 -->
+    <!--This rule aims to restrict the use of <gi>met<gi> attribute on <gi>l<gi> element. The result expected is accept only French poetry patterns (metrically)-->
+      <elementSpec ident="l">
+        
+        <attList>
+      <attDef ident="met" mode="change" usage="opt">
+        <desc>[Note Change!]This specifies the metrical pattern of the verse. The customization is used to permit only French metrical patterns.</desc>
+        <datatype>
+          <dataRef name="token"/><!--This specifies the type of data-->
+        </datatype>
+        <valList type="closed" mode="replace"><!--type="closed" is used to allowed only the values described bellow (the free text is prohibited)./ mode="replace" replaces the default tei -->
+          <valItem ident="alexandrin">
+          <desc>The alexandrine is a 12-syllabe verse</desc>
+          </valItem>
+          <valItem ident="decasyllabe">
+            <desc>The decasyllabe is a 10-syllabe verse</desc>
+          </valItem>
+          <valItem ident="octosyllabe">
+            <desc>The octosyllabe is a 8-syllabe verse</desc>
+          </valItem>
+          <valItem ident="hexasyllabe">
+            <desc>The hexasyllabe is a 6-syllabe verse</desc>
+          </valItem>
+          <valItem ident="heptasyllabe">
+            <desc>The heptasyllabe is a 7-syllabe verse</desc>
+          </valItem>
+        </valList>
+        
+        <exemplum>
+        <!--Here I create a minimal encoding example from my tei file-->
+          <egXML xmlns="http://www.tei-c.org/ns/Examples">
+            <!--Example from my corpus, in the albatros file -->
+            <l n="1" met="alexandrin">Souvent, pour s'amuser, les hommes d'équipages</l>
+            <l n="4" met="hexasyllabe">Jeter l'ancre un seul jour ?</l>
+            <!--Why this rule is usefull ? Because as we said in the example, it aims the uniformisation of the vocabulary accross the all corpus. So you have 1 way to encode "alendrin" and no many ways as "alex", "12-syllabes"...-->
+          </egXML>
+        </exemplum>
+        </attDef>
+        </attList>
+      </elementSpec>
+      <!--END of the element specification 1-->
+        
+        
+      <!-- START element specification 2 -->
+      <!-- The aims of this rule is to define what elements can appear inside <lg> and in what order they must appear.-->
+      <elementSpec ident="lg">
+       <content>
+         <sequence>
+           <elementRef key="head" minOccurs="0" maxOccurs="1"/> <!--<head> for eventual stanzas titles-->
+           <alternate minOccurs="0" maxOccurs="unbounded">
+             <elementRef key="lg"/><!--<lg> for complex structures like stanzas (quatrains for example)-->
+             <elementRef key="l"/><!--<l> for simple element like verse line-->
+           </alternate>
+         </sequence>
+       </content>
+       <!-- Why this rule is usefull ? The rule permits a hierarchical nesting. Stanzas contain either stanzas (quatrains...) or lines, titles can appear at the start of a line only, and the structure show the logical organization of a French poem.-->
+      </elementSpec>
+      <!-- END of the element specification 2 -->
+      
+      
+      <!-- START element specification 3 -->
+      <elementSpec ident="rhyme">
+        
+        <!-- The aim of this rule is to impose a @rhyme attribute whenever the <lg type="quatrain"> used, to document the rhyme scheme-->
+        <constraintSpec ident="quatrain-rhyme-required" scheme="schematron">
+          <desc>[Note Change!] This Schematron rule enforces that when a line group (lg)
+            has @type="quatrain", it must also have a @rhyme attribute specifying the rhyme
+            scheme.</desc>
+          
+          <constraint
+            xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+            xmlns:tei="http://www.tei-c.org/ns/1.0">
+            
+            <sch:rule context="tei:lg[@type='quatrain']"> <!--the rule targets only <lg> elements where the type="quatrain" -->
+              <sch:assert test="@rhyme"><!--This make shure that the @rhyme attribute exists -->
+                A quatrain (lg with @type="quatrain") must have a @rhyme attribute which
+                specifies his rhyme scheme (e.g., "abab" or "abba"). Classical French
+                quatrains follow established rhyme patterns that should be documented.
+              </sch:assert>
+            </sch:rule>
+           <!--Why this rule is usefull? It is usefull because classical poems uses patterns in particular in its rhymes (for quatrains). So the rule ensures the good documented of the nature of quatrain. It is very iportant to the analyse of the text.-->
+          </constraint>
+        </constraintSpec>
+      </elementSpec>
+      <!--Remark: This rule is made for quatrains, so it is less usefull in the poem "La courbe de tes yeux", a surrealist poem. These poems do not have formal rhymes schema and are often irregular.-->
+      
+      <!-- END of the element specification 3-->
       
     </body>
   </text>
